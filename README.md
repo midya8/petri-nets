@@ -1,6 +1,6 @@
-# FireLab
+# Petri nets
 
-FireLab checks whether a supplied transition-count vector can execute in a small ordinary weighted Petri net. It separately checks whether the goal is reachable using any transition counts. A proposed firing-count vector can balance every token and still have no executable order. That does **not** necessarily make its goal unreachable: extra helper transitions may supply the missing catalyst and return it later.
+Petri nets checks whether a supplied transition-count vector can execute in a small ordinary weighted Petri net. It separately checks whether the goal is reachable using any transition counts. A proposed firing-count vector can balance every token and still have no executable order. That does **not** necessarily make its goal unreachable: extra helper transitions may supply the missing catalyst and return it later.
 
 The original default has initial `(A,B,R)=(0,0,2)` and goal `(0,1,1)`. Transition `t0: A+R -> A+B` has net effect `(0,+1,-1)` but still requires one A. The supplied counts `(1,0,0)` satisfy the equation and cannot execute. The same net reaches the goal with `t1,t0,t2`: borrow A from R, act, return A. A separate control removes both helpers and makes the balanced target truly unreachable.
 
